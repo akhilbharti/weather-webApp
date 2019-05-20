@@ -10,6 +10,7 @@ const viewPath = path.join(__dirname, "../template/views"); //to join the path f
 const publicDirectoryPath = path.join(__dirname, "../public"); // to join the path for serving static files
 
 const app = express();
+const port = process.env.PORT || 3000;
 // setup handlebar engine and views location
 app.set("view engine", "hbs"); // to set dyanamic template hbs.
 app.set("views", viewPath); // to set the dyanamic path of template
@@ -86,6 +87,7 @@ app.get("/products", (req, res) => {
 app.get("*", (req, res) => {
   res.render("404", { title: "404", errorMessage: "page does not exist" });
 });
-app.listen(3002, () => {
-  console.log("server is running!");
+
+app.listen(port, () => {
+  console.log("server is running on port" + port);
 });
